@@ -1,7 +1,7 @@
 $(function() {
 
-	FriendView = Backbone.View.extend({
-		el : 'body',
+	PetView = Backbone.View.extend({
+		el : '#pet',
 		
 		events : {
 			'click #create' : 'create',
@@ -100,7 +100,7 @@ $(function() {
 		getAll : function() {
 			this.clearField();
 			var pets = new Backbone.Collection;
-			pets.url='http://cors-res.techdora.cloudfoundry.me/pet';
+			pets.url= host + '/pet';
 			pets.fetch(
 					{
 						success : _.bind(function(pets){
@@ -162,5 +162,5 @@ $(function() {
 	});
 	
 
-	var view = new FriendView();
+	var petView = new PetView();
 });

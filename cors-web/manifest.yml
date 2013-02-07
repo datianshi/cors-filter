@@ -1,0 +1,13 @@
+--- 
+applications: 
+  target/cors-web-1.0.0-BUILD-SNAPSHOT.war: 
+    name: core-web
+    mem: 512M
+    framework: 
+      name: spring
+      info: 
+        description: Java SpringSource Spring Application
+        mem: 512M
+        exec: 
+    instances: 1
+    url: ${name}.${target-base}

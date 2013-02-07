@@ -1,7 +1,12 @@
 package org.freelance.cors;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.ServletException;
+
+import org.freelance.filter.CorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/pet")
 public class PetController {
+	@Autowired
+	CorsFilter filter;
 	
 	@Autowired
 	PetService service;
@@ -45,5 +52,18 @@ public class PetController {
 	public ResponseEntity<Pet> get(@PathVariable Long id){
 		 Pet p = service.get(id);
 		 return new ResponseEntity<Pet>(p, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/config",method=RequestMethod.GET)
+	public ResponseEntity<Map<String,String>> getConfig(){
+		 return new ResponseEntity<Map<String,String>>(filter.getConfig(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/config",method=RequestMethod.POST)
+	public ResponseEntity<Map<String, String>> postConfig(@RequestBody Map<String,String> map) throws ServletException{
+		 filter.refresh(map);
+		 Map<String, String> hashMap = new HashMap<String, String>();
+		 hashMap.put("success", "success update cors filter config");
+		 return new ResponseEntity<Map<String, String>>(hashMap, HttpStatus.OK);
 	}	
 }

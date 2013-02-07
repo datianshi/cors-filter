@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cors Filter Controller</title>
+<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+</head>
+<body>
+	
+	<div class="container">
+	
+	      <div class="hero-unit">
+	        <h1>Cors Controller</h1>
+	        <p> By using this controller. You can dynamically change some filters configuration
+	        </p>
+	      </div>
+	    <div class="row" id="filter">
+	    	<div class="span12 offset3">
+	    		<label>Supported Headers:</label><input type="text" id="supportedHeaders" />
+				<label>Supported Methods:</label><input type="text" id="supportedMethods" />
+				<label>allowOrigins</label><input type="text" id="allowOrigin" />
+				<label>allowSubdomains</label><input type="text" id="allowSubdomains" />
+				
+				<button id="update">update</button>
+				<button id="get">get</button>
+	    	</div>
+	    </div>
+	</div>
+	
+<script type="text/javascript" src="js/underscore.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/backbone.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/filterControl.js"></script>
+</body>
+</html>

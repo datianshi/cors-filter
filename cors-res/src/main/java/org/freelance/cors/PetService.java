@@ -40,5 +40,8 @@ public class PetService {
 		return new ArrayList<Pet>(pets.values());
 	}
 	
+	public void refreshApplicationContext(){
+		
+	}
 	
 }
